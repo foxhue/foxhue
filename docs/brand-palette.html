@@ -512,55 +512,212 @@
     }
 
     /* ═══════════════════════════════════════════════════
-       NEXT STEPS
+       FEEDBACK FORM
        ═══════════════════════════════════════════════════ */
-    .next-steps {
+    .palette-choices {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .palette-choice {
+      cursor: pointer;
+      display: block;
+    }
+
+    .palette-choice__radio {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .palette-choice__inner {
+      background: #f5f5f5;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      height: 100%;
+    }
+
+    .palette-choice__inner:hover {
+      border-color: #bbb;
+    }
+
+    .palette-choice__radio:checked + .palette-choice__inner {
+      border-color: #1a1a1a;
+      box-shadow: 0 0 0 1px #1a1a1a;
+    }
+
+    .palette-choice__radio:focus-visible + .palette-choice__inner {
+      outline: 2px solid #666;
+      outline-offset: 2px;
+    }
+
+    .palette-choice__label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 0.125rem;
+    }
+
+    .palette-choice__name {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.75rem;
+    }
+
+    .palette-choice__swatches {
+      display: flex;
+      gap: 6px;
+    }
+
+    .palette-choice__swatch {
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .feedback-notes {
+      margin-bottom: 1.5rem;
+    }
+
+    .feedback-label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    .feedback-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 0.875rem;
+      color: #1a1a1a;
       background: #f5f5f5;
       border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 2rem;
-      margin-top: 1rem;
-    }
-
-    .next-steps ol {
-      padding-left: 1.25rem;
-      counter-reset: steps;
-      list-style: none;
-    }
-
-    .next-steps ol li {
-      padding: 0.5rem 0;
-      padding-left: 0.5rem;
-      font-size: 0.9375rem;
+      border-radius: 6px;
+      resize: vertical;
       line-height: 1.6;
-      position: relative;
-      counter-increment: steps;
+      transition: border-color 0.2s ease;
     }
 
-    .next-steps ol li::before {
-      content: counter(steps);
-      position: absolute;
-      left: -1.25rem;
-      top: 0.5rem;
-      width: 1.25rem;
-      height: 1.25rem;
-      background: #1a1a1a;
-      color: #fff;
-      border-radius: 50%;
-      font-size: 0.6875rem;
-      font-weight: 700;
+    .feedback-textarea::placeholder {
+      color: #aaa;
+    }
+
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: #999;
+    }
+
+    .feedback-fields {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feedback-field {
       display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    .feedback-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+    }
+
+    .feedback-field input {
+      padding: 0.625rem 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 0.875rem;
+      color: #1a1a1a;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      transition: border-color 0.2s ease;
+    }
+
+    .feedback-field input:focus {
+      outline: none;
+      border-color: #999;
+    }
+
+    .feedback-field input::placeholder {
+      color: #aaa;
+    }
+
+    .feedback-buttons {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .feedback-btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      line-height: 1;
+      padding: 0.75rem 2rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .next-steps code {
-      background: #e8e8e8;
-      padding: 0.125rem 0.375rem;
-      border-radius: 4px;
+    .feedback-btn--submit {
+      background: #1a1a1a;
+      color: #fff;
+      border: 1px solid #1a1a1a;
+    }
+
+    .feedback-btn--submit:hover {
+      background: #333;
+    }
+
+    .feedback-btn--submit:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .feedback-btn--copy {
+      background: transparent;
+      color: #555;
+      border: 1px solid #ccc;
+    }
+
+    .feedback-btn--copy:hover {
+      background: #f5f5f5;
+    }
+
+    .feedback-message {
+      margin-top: 0.75rem;
       font-size: 0.8125rem;
-      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      color: #888;
+      min-height: 1.25rem;
+    }
+
+    .feedback-message--error {
+      color: #c0392b;
+    }
+
+    .feedback-message--success {
+      color: #27ae60;
     }
 
     /* ═══════════════════════════════════════════════════
@@ -629,6 +786,14 @@
       .section-title {
         font-size: 1.25rem;
       }
+
+      .palette-choices {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback-fields {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -679,10 +844,13 @@
         box-shadow: none;
       }
 
-      .context-box,
-      .next-steps {
+      .context-box {
         background: #fff;
         border: 1px solid #ddd;
+      }
+
+      #paletteForm {
+        display: none;
       }
 
       .direction-card {
@@ -1144,19 +1312,92 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════
-         6. NEXT STEPS
+         6. YOUR FEEDBACK
          ═══════════════════════════════════════════════════ -->
     <section class="section">
-      <h2 class="section-title">Next Steps</h2>
+      <h2 class="section-title">Your Feedback</h2>
+      <p>Which palette direction feels right for Foxhue? Pick your preference below and add any notes &mdash; we&rsquo;ll refine from there.</p>
 
-      <div class="next-steps">
-        <ol>
-          <li>Review the three palettes above and select your preferred direction (A, B, or C).</li>
-          <li>Copy the chosen hex values into <code>project.json</code> under <code>brand.colors</code> &mdash; the keys are <code>primary</code>, <code>accent</code>, <code>accent_hover</code>, <code>background</code>, and <code>surface</code>.</li>
-          <li>Run <code>/scaffold</code> to generate design assets and component templates with the selected palette applied.</li>
-          <li>If adjustments are needed (e.g. a warmer accent, a different hover state), flag specific colours and we will iterate before scaffolding.</li>
-        </ol>
-      </div>
+      <form id="paletteForm" action="https://formsubmit.co/andrew@foxhue.com" method="POST">
+        <input type="hidden" name="_cc" value="ashley@foxhue.com">
+        <input type="hidden" name="_subject" value="Foxhue — Palette Preference">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="palette-choices">
+          <!-- Direction A -->
+          <label class="palette-choice">
+            <input type="radio" name="palette_preference" value="A — Studio Minimal" class="palette-choice__radio">
+            <div class="palette-choice__inner">
+              <span class="palette-choice__label">Direction A</span>
+              <span class="palette-choice__name">Studio Minimal</span>
+              <div class="palette-choice__swatches">
+                <span class="palette-choice__swatch" style="background:#1A1B2E;"></span>
+                <span class="palette-choice__swatch" style="background:#3D6294;"></span>
+                <span class="palette-choice__swatch" style="background:#2F5080;"></span>
+                <span class="palette-choice__swatch" style="background:#FAFAFA; border-color:#ddd;"></span>
+                <span class="palette-choice__swatch" style="background:#FFFFFF; border-color:#ddd;"></span>
+              </div>
+            </div>
+          </label>
+
+          <!-- Direction B -->
+          <label class="palette-choice">
+            <input type="radio" name="palette_preference" value="B — Editorial Motion" class="palette-choice__radio">
+            <div class="palette-choice__inner">
+              <span class="palette-choice__label">Direction B</span>
+              <span class="palette-choice__name">Editorial Motion</span>
+              <div class="palette-choice__swatches">
+                <span class="palette-choice__swatch" style="background:#0F1012;"></span>
+                <span class="palette-choice__swatch" style="background:#C44B2B;"></span>
+                <span class="palette-choice__swatch" style="background:#A83D22;"></span>
+                <span class="palette-choice__swatch" style="background:#F5F0EB;"></span>
+                <span class="palette-choice__swatch" style="background:#FFFFFF; border-color:#ddd;"></span>
+              </div>
+            </div>
+          </label>
+
+          <!-- Direction C -->
+          <label class="palette-choice">
+            <input type="radio" name="palette_preference" value="C — Warm Craft" class="palette-choice__radio">
+            <div class="palette-choice__inner">
+              <span class="palette-choice__label">Direction C</span>
+              <span class="palette-choice__name">Warm Craft</span>
+              <div class="palette-choice__swatches">
+                <span class="palette-choice__swatch" style="background:#2D2926;"></span>
+                <span class="palette-choice__swatch" style="background:#9E5E33;"></span>
+                <span class="palette-choice__swatch" style="background:#845028;"></span>
+                <span class="palette-choice__swatch" style="background:#FAF6F2;"></span>
+                <span class="palette-choice__swatch" style="background:#FFFFFF; border-color:#ddd;"></span>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div class="feedback-notes">
+          <label for="paletteNotes" class="feedback-label">Any colour notes?</label>
+          <textarea id="paletteNotes" name="colour_notes" class="feedback-textarea" rows="3" placeholder="e.g. 'Love the copper but want a lighter background'"></textarea>
+        </div>
+
+        <div class="feedback-fields">
+          <div class="feedback-field">
+            <label for="clientName">Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="clientName" name="client_name" required placeholder="Your name" autocomplete="name">
+          </div>
+          <div class="feedback-field">
+            <label for="clientEmail">Email (optional)</label>
+            <input type="email" id="clientEmail" name="client_email" placeholder="your@email.com" autocomplete="email">
+          </div>
+        </div>
+
+        <div id="compiledFields"></div>
+
+        <div class="feedback-buttons">
+          <button type="submit" class="feedback-btn feedback-btn--submit" id="btnSubmit">Submit Preference</button>
+          <button type="button" class="feedback-btn feedback-btn--copy" id="btnCopy">Copy to Clipboard</button>
+        </div>
+
+        <p class="feedback-message" id="formMessage" aria-live="polite"></p>
+      </form>
     </section>
 
     <!-- ═══════════════════════════════════════════════════
@@ -1167,6 +1408,177 @@
     </footer>
 
   </div>
+
+  <script>
+  (function () {
+    var STORAGE_KEY = 'foxhue_palette_feedback';
+
+    // ── Save to localStorage ──
+    function saveData() {
+      var data = {};
+      var checked = document.querySelector('input[name="palette_preference"]:checked');
+      data.palette = checked ? checked.value : '';
+      data.notes = document.getElementById('paletteNotes').value;
+      data.clientName = document.getElementById('clientName').value;
+      data.clientEmail = document.getElementById('clientEmail').value;
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+    }
+
+    // ── Restore from localStorage ──
+    function restoreData() {
+      var raw;
+      try { raw = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+      if (!raw) return;
+      var data;
+      try { data = JSON.parse(raw); } catch (e) { return; }
+      if (data.palette) {
+        var radio = document.querySelector('input[name="palette_preference"][value="' + data.palette + '"]');
+        if (radio) radio.checked = true;
+      }
+      if (data.notes) document.getElementById('paletteNotes').value = data.notes;
+      if (data.clientName) document.getElementById('clientName').value = data.clientName;
+      if (data.clientEmail) document.getElementById('clientEmail').value = data.clientEmail;
+    }
+
+    // ── Compile plaintext summary ──
+    function compilePlaintext() {
+      var lines = ['Foxhue Palette Preference', '=========================', ''];
+      var checked = document.querySelector('input[name="palette_preference"]:checked');
+      lines.push('Preferred palette: ' + (checked ? checked.value : 'No selection'));
+      var notes = document.getElementById('paletteNotes').value.trim();
+      if (notes) {
+        lines.push('');
+        lines.push('Colour notes: ' + notes);
+      }
+      lines.push('');
+      var name = document.getElementById('clientName').value.trim();
+      var email = document.getElementById('clientEmail').value.trim();
+      if (name) lines.push('Name: ' + name);
+      if (email) lines.push('Email: ' + email);
+      return lines.join('\n');
+    }
+
+    // ── Compile hidden fields for form submit ──
+    function compileFormFields() {
+      var container = document.getElementById('compiledFields');
+      container.innerHTML = '';
+      var checked = document.querySelector('input[name="palette_preference"]:checked');
+      if (checked) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'Preferred Palette';
+        input.value = checked.value;
+        container.appendChild(input);
+      }
+      var notes = document.getElementById('paletteNotes').value.trim();
+      if (notes) {
+        var notesInput = document.createElement('input');
+        notesInput.type = 'hidden';
+        notesInput.name = 'Colour Notes';
+        notesInput.value = notes;
+        container.appendChild(notesInput);
+      }
+    }
+
+    // ── Event listeners ──
+
+    // Radio buttons: save on change
+    document.querySelectorAll('input[name="palette_preference"]').forEach(function (radio) {
+      radio.addEventListener('change', saveData);
+    });
+
+    // Textarea + fields: save on blur
+    document.getElementById('paletteNotes').addEventListener('blur', saveData);
+    document.getElementById('clientName').addEventListener('blur', saveData);
+    document.getElementById('clientEmail').addEventListener('blur', saveData);
+
+    // Copy to clipboard
+    document.getElementById('btnCopy').addEventListener('click', function () {
+      var text = compilePlaintext();
+      var msg = document.getElementById('formMessage');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          msg.textContent = 'Copied to clipboard.';
+          msg.className = 'feedback-message feedback-message--success';
+        }).catch(function () {
+          fallbackCopy(text, msg);
+        });
+      } else {
+        fallbackCopy(text, msg);
+      }
+    });
+
+    function fallbackCopy(text, msg) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        msg.textContent = 'Copied to clipboard.';
+        msg.className = 'feedback-message feedback-message--success';
+      } catch (e) {
+        msg.textContent = 'Could not copy. Please select and copy manually.';
+        msg.className = 'feedback-message feedback-message--error';
+      }
+      document.body.removeChild(ta);
+    }
+
+    // Form submit (AJAX — stays on same page)
+    document.getElementById('paletteForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var form = this;
+      var msg = document.getElementById('formMessage');
+      var btn = document.getElementById('btnSubmit');
+
+      var checked = document.querySelector('input[name="palette_preference"]:checked');
+      if (!checked) {
+        msg.textContent = 'Please select a palette direction before submitting.';
+        msg.className = 'feedback-message feedback-message--error';
+        return;
+      }
+
+      var name = document.getElementById('clientName').value.trim();
+      if (!name) {
+        msg.textContent = 'Please enter your name.';
+        msg.className = 'feedback-message feedback-message--error';
+        document.getElementById('clientName').focus();
+        return;
+      }
+
+      compileFormFields();
+      btn.disabled = true;
+      btn.textContent = 'Submitting\u2026';
+      msg.textContent = '';
+      msg.className = 'feedback-message';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          msg.textContent = 'Thank you! Your palette preference has been submitted.';
+          msg.className = 'feedback-message feedback-message--success';
+          btn.textContent = 'Submitted';
+          try { localStorage.removeItem(STORAGE_KEY); } catch (ex) {}
+        } else {
+          throw new Error('Server error');
+        }
+      }).catch(function () {
+        msg.textContent = 'Something went wrong. Please try the \u201cCopy to Clipboard\u201d button instead and email your preference.';
+        msg.className = 'feedback-message feedback-message--error';
+        btn.disabled = false;
+        btn.textContent = 'Submit Preference';
+      });
+    });
+
+    // ── Init ──
+    restoreData();
+  })();
+  </script>
 
 </body>
 </html>
