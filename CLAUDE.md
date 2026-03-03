@@ -3,9 +3,9 @@
 ## Overview
 Agency website for Foxhue Ltd, a creative design and marketing studio based in Bicester, Oxfordshire. Built from the Foxhue Studio template.
 
-**GitHub Pages**: https://ajeibbotson-cmyk.github.io/foxhue/
-**Design Hub**: https://ajeibbotson-cmyk.github.io/foxhue/designs/
-**Layout Variants**: https://ajeibbotson-cmyk.github.io/foxhue/website/variants/
+**GitHub Pages**: https://foxhue.github.io/foxhue/
+**Design Hub**: https://foxhue.github.io/foxhue/designs/
+**Layout Variants**: https://foxhue.github.io/foxhue/website/variants/
 
 ## Repo Structure
 ```
@@ -114,7 +114,7 @@ SEO competitor report (`seo-competitor-report.html`), brand palette exploration 
 ## Deployment
 - **Branch**: `main` (GitHub Pages source)
 - **Pages**: Enabled, serves from root of `main`
-- **URL**: https://ajeibbotson-cmyk.github.io/foxhue/
+- **URL**: https://foxhue.github.io/foxhue/
 
 ## Architecture Notes
 - All generated files read from `project.json` — CSS prefix is `--foxhue-`
